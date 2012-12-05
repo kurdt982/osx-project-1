@@ -10,6 +10,10 @@
 
 @interface Cell : NSObject
 
--(int)hammingDistance:(id) atCell;
+@property NSMutableArray *dna;
+
+-(void)print:(int) n;
+-(int)hammingDistance:(Cell *) f;
++(int)myrandom:(int)startX fromrange:(int)stopX;
 
 @end

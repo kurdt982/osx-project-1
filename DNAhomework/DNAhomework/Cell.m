@@ -10,14 +10,30 @@
 
 @implementation Cell
 
++(int)myrandom:(int)startX fromrange:(int)stopX{
+    
+    srandom((unsigned)(mach_absolute_time() & 0xFFFFFFFF));
+    int result = startX + (random() % (stopX-startX));
+    return result;
+}
+
+
 -(id) init  {
     self = [super init];
-    if (self) {
+    if (self)
+    {
+       
+        [self setDna:[[NSMutableArray alloc] initWithCapacity:100]];
+//        _dna = [[NSMutableArray alloc] initWithCapacity:100];
         
         NSString *dnakey;
         
-        for (int i=0; i>100; i++) {
-            int y = round(random() % 4);
+        int y;
+        
+        for (int i=0; i<100; i++) {
+            
+            y = [Cell myrandom:1 fromrange:4];
+
             if (y == 1){
                 dnakey = @"A";
             }
@@ -31,20 +47,30 @@
                 dnakey = @"C";
             }
             
-            [dna addObject:(dnakey)];
+            [self.dna addObject:(dnakey)];
         }
     }
+
     return self;
 }
 
--(int)hammingDistance:(id)atCell {
-
-    int *x;
-    for (int i=0; i>100; i++) {
-
+-(int)hammingDistance:(Cell *)f {
     
+    int x = 0;
+    for (int i=0; i<100; i++)
+    {
+        if ([self.dna objectAtIndex:i] == [f.dna objectAtIndex:i])
+        {
+            x++;
+        }
     }
-    return 0;
+    return x;
 }
+
+-(void)print:(int)n{
+    NSLog(@"%i", n);
+}
+
+
 
 @end
