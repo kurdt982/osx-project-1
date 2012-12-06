@@ -14,6 +14,13 @@
 
 -(void)print:(int) n;
 -(int)hammingDistance:(Cell *) f;
-+(int)myrandom:(int)startX fromrange:(int)stopX;
+
+-(NSString*)getdnabynumber:(int)n;
+
+-(int)getnumberbydna:(NSString*) olddna;
+-(int)myrandom:(int)startX fromrange:(int)stopX;
+
+-(int)getrandomfrom:(int)x to:(int)y wintout:(NSMutableArray*) array;
+-(int)getrandomfrom:(int)x to:(int)y without:(int) olddna;
 
 @end
